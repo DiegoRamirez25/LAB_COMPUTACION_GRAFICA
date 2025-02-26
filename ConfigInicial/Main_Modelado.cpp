@@ -404,7 +404,18 @@ int main() {
 			glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 			glDrawArrays(GL_TRIANGLES, 72, 108);
 
+			// CUERNOS
+			model = glm::mat4(1.0f);
+			model = glm::scale(model, glm::vec3(1.2f, 1.3f, 1.2f)); // Ancho, grosor, profundidad
+			model = glm::translate(model, glm::vec3(-1.8f, 5.6f, -0.10f));
+			glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+			glDrawArrays(GL_TRIANGLES, 36, 73);
 
+			model = glm::mat4(1.0f);
+			model = glm::scale(model, glm::vec3(1.2f, 1.3f, 1.2f)); // Ancho, grosor, profundidad
+			model = glm::translate(model, glm::vec3(1.8f, 5.6f, -0.10f));
+			glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+			glDrawArrays(GL_TRIANGLES, 36, 73);
 			glBindVertexArray(0);
 
 			glfwSwapBuffers(window);
