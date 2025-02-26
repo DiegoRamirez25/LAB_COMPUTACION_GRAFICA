@@ -2,7 +2,7 @@
 Practica 3
 Ramírez Moreno Diego Gerardo
 319296738
-21 de Febrero del 2025
+14 de Febrero del 2025
 */
 
 #include<iostream>
