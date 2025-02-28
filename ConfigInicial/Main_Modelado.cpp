@@ -339,7 +339,7 @@ int main() {
 			Inputs(window);
 			glfwPollEvents();
 
-			glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+			glClearColor(0.44f, 0.45f, 0.62f, 1.0f);
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 			ourShader.Use();
@@ -452,11 +452,11 @@ int main() {
 			glDrawArrays(GL_TRIANGLES, 71, 108);
 
 			// CEJA 
-			//model = glm::mat4(1.0f);
-			//model = glm::scale(model, glm::vec3(3.0f, 0.5f, 1.0f)); // Ancho, grosor, profundidad
-			//model = glm::translate(model, glm::vec3(0.0f, 12.8f, 3.5f));
-			//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-			//glDrawArrays(GL_TRIANGLES, 71, 108);
+			model = glm::mat4(1.0f);
+			model = glm::scale(model, glm::vec3(3.0f, 0.5f, 1.0f)); // Ancho, grosor, profundidad
+			model = glm::translate(model, glm::vec3(0.0f, 12.8f, 3.5f));
+			glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+			glDrawArrays(GL_TRIANGLES, 71, 108);
 
 			// CUERNOS
 			model = glm::mat4(1.0f);
@@ -469,7 +469,7 @@ int main() {
 			model = glm::scale(model, glm::vec3(1.2f, 1.3f, 1.2f)); // Ancho, grosor, profundidad
 			model = glm::translate(model, glm::vec3(1.8f, 5.6f, -0.10f));
 			glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-			glDrawArrays(GL_TRIANGLES, 36, 73);
+			glDrawArrays(GL_TRIANGLES, 35, 73);
 
 			// BRAZO IZQ 
 			model = glm::mat4(1.0f);
