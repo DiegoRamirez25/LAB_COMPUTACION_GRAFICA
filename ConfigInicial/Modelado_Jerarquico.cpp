@@ -1,3 +1,10 @@
+/*
+Práctica 5
+Ramirez Moreno Diego Gerardo
+319296738
+07 de Marzo del 2025
+*/
+
 #include<iostream>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
