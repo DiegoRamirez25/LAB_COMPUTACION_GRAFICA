@@ -221,11 +221,11 @@ int main() {
 		//Model 
 		// ------------------------ Hombro --------------------------------
 		model = glm::rotate(model, glm::radians(hombro), glm::vec3(0.0f, 0.0, 1.0f));	// Aplicamos rotacion en la componente Z
-		modelTemp = model = glm::translate(model, glm::vec3(1.0f, 0.0f, 0.0f));			// Genera sensacion de movimiento en articulacion del hombro
+		modelTemp = model = glm::translate(model, glm::vec3(1.5f, 0.0f, 0.0f));			// Genera sensacion de movimiento en articulacion del hombro
 		// y recorremos la mitad de la caja 1.5
-		model = glm::scale(model, glm::vec3(3.0f, 2.0f, 2.0f));							// Solo es el tamano de la caja
-		color = glm::vec3(0.0f, 1.0f, 0.0f);											// Con color generamos un color diferente para cada caja
-		// Mandamo a dibujar
+		model = glm::scale(model, glm::vec3(3.0f, 2.0f, 2.6f));							// Solo es el tamano de la caja
+		color = glm::vec3(0.8f, 0.6f, 0.9f);											// Color cambiado a lila pastel
+		// Mandamos a dibujar
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);//A
@@ -234,8 +234,8 @@ int main() {
 		model = glm::translate(modelTemp, glm::vec3(1.5f, 0.0f, 0.0f));					// 1.5 unidades del tamano de la caja el final e inicio de la otra caja
 		model = glm::rotate(model, glm::radians(codo), glm::vec3(0.0f, 1.0f, 0.0f));
 		modelTemp = model = glm::translate(model, glm::vec3(1.5f, 0.0f, 0.0f));			// Para llegar al centro de la sig figura
-		model = glm::scale(model, glm::vec3(3.0f, 2.0f, 2.0f));							// Para poder escalar	
-		color = glm::vec3(1.0f, 0.0f, 0.0f);
+		model = glm::scale(model, glm::vec3(3.0f, 2.0f, 2.6f));							// Para poder escalar	
+		color = glm::vec3(0.9f, 0.8f, 0.5f); 											// Color cambiado a amarillo pastel
 		// Dibujamos
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
@@ -244,131 +244,168 @@ int main() {
 		// ------------------------ Palma --------------------------------
 		model = glm::translate(modelTemp, glm::vec3(1.5f, 0.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(muneca), glm::vec3(1.0f, 0.0f, 0.0f));
-		modelTemp3 = modelTemp2 = modelTemp = model = glm::translate(model, glm::vec3(0.25f, 0.0f, 0.0f));	// Para poder generar los desde mas rapido desde la palma
-		// es un tipo checkpint
-		model = glm::scale(model, glm::vec3(0.5f, 2.0f, 2.5f));
-		color = glm::vec3(1.0f, 1.0f, 1.0f);
+		modelTemp3 = modelTemp2 = modelTemp = model = glm::translate(model, glm::vec3(0.25f, 0.0f, 0.0f));	// Para poder generar los dedos mas rapido desde la palma
+		// es un tipo checkpoint
+		model = glm::scale(model, glm::vec3(0.5f, 2.0f, 2.6f));
+		color = glm::vec3(0.6f, 0.9f, 0.7f); 											// Color cambiado a verde menta pastel
 		// Dibujamos
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);//C
 
 		// ------------------------ Dedo 1 pt1 --------------------------------
-		model = glm::translate(modelTemp, glm::vec3(0.25f, 0.75f, 1.0f));
-		model = glm::rotate(model, glm::radians(dedo1), glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::translate(modelTemp, glm::vec3(0.2f, 0.7f, 0.95f));
+		model = glm::rotate(model, glm::radians(dedo2), glm::vec3(0.0f, 0.0f, 2.0f));
 		modelTemp = model = glm::translate(model, glm::vec3(0.5f, 0.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(1.2f, 0.5f, 0.45f));
-		color = glm::vec3(0.0f, 1.0f, 1.0f);
+		color = glm::vec3(1.0f, 1.0f, 0.7f);
 		// Dibujamos
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		glDrawArrays(GL_TRIANGLES, 0, 36);//D
+		glDrawArrays(GL_TRIANGLES, 0, 36); //F
 
 		// ------------------------ Dedo 1 pt2 --------------------------------
-		model = glm::translate(modelTemp, glm::vec3(1.2f, 0.0f, 0.0f));
-		model = glm::rotate(model, glm::radians(dedo1b), glm::vec3(0.0f, 0.0f, 1.0f));
-		model = glm::scale(model, glm::vec3(1.2f, 0.5f, 0.45f));
-		color = glm::vec3(1.0f, 0.0f, 1.0f);
+		model = glm::translate(modelTemp, glm::vec3(0.7f, 0.0f, 0.0f)); // Se traslada desde la base del dedo 1
+		model = glm::rotate(model, glm::radians(dedo1b), glm::vec3(0.0f, 0.0f, 1.0f)); // Se rota alrededor del eje Z
+		modelTemp = model = glm::translate(model, glm::vec3(0.7f, 0.0f, 0.0f)); // Se ajusta la posición después de la rotación
+		model = glm::scale(model, glm::vec3(1.6f, 0.5f, 0.45f)); // Se escala (Tamaño corregido)
+		color = glm::vec3(0.8f, 0.7f, 1.0f);
 		// Dibujamos
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		glDrawArrays(GL_TRIANGLES, 0, 36);//E
+		glDrawArrays(GL_TRIANGLES, 0, 36); //G
 
-		// ------------------------ Dedo 1 pt3 --------------------------------
-		model = glm::translate(modelTemp, glm::vec3(2.1f, 0.0f, 0.0f));
-		model = glm::rotate(model, glm::radians(dedo1c), glm::vec3(0.0f, 0.0f, 1.0f));
-		model = glm::scale(model, glm::vec3(0.7f, 0.5f, 0.45f));
-		color = glm::vec3(1.0f, 0.0f, 1.0f);
+		// ------------------------ Dedo 1 pt3 (Nueva falange) --------------------------------
+		model = glm::translate(modelTemp, glm::vec3(0.6f, 0.0f, 0.0f)); // Se traslada desde la base de la segunda falange
+		model = glm::rotate(model, glm::radians(dedo1c), glm::vec3(0.0f, 0.0f, 1.0f)); // Se rota alrededor del eje Z
+		model = glm::translate(model, glm::vec3(0.5f, 0.0f, 0.0f)); // Se ajusta la posición después de la rotación
+		model = glm::scale(model, glm::vec3(1.2f, 0.4f, 0.35f)); // Se escala (Tamaño más pequeño)
+		color = glm::vec3(0.7f, 0.6f, 0.9f);
 		// Dibujamos
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		glDrawArrays(GL_TRIANGLES, 0, 36);//E
+		glDrawArrays(GL_TRIANGLES, 0, 36); //H
 
 		// ------------------------ Dedo 2 pt1 --------------------------------
-		model = glm::translate(modelTemp, glm::vec3(-0.5f, 0.0f, -0.6f));
-		model = glm::rotate(model, glm::radians(dedo2), glm::vec3(0.0f, 0.0f, 1.0f));
-		modelTemp = model = glm::translate(model, glm::vec3(0.5f, 0.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(1.2f, 0.5f, 0.45f));
-		color = glm::vec3(1.0f, 1.0f, 0.7f);
+		model = glm::translate(modelTemp3, glm::vec3(0.1f, 0.7f, 0.7f)); // Nueva posición
+		model = glm::rotate(model, glm::radians(dedo2), glm::vec3(0.0f, 0.0f, 2.0f));
+		modelTemp4 = modelTemp = model = glm::translate(model, glm::vec3(0.25f, 0.0f, 0.0f)); // Punto base para falanges
+		model = glm::scale(model, glm::vec3(1.1f, 0.5f, 0.45f));
+		color = glm::vec3(1.0f, 0.8f, 0.6f);
 		// Dibujamos
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		glDrawArrays(GL_TRIANGLES, 0, 36);//F
+		glDrawArrays(GL_TRIANGLES, 0, 36); // I
 
 		// ------------------------ Dedo 2 pt2 --------------------------------
-		model = glm::translate(modelTemp, glm::vec3(0.7f, 0.0f, 0.0f));
-		model = glm::rotate(model, glm::radians(dedo1b), glm::vec3(0.0f, 0.0f, 1.0f));
-		model = glm::translate(model, glm::vec3(0.5f, 0.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(1.2f, 0.5f, 0.45f));
-		color = glm::vec3(0.8f, 0.7f, 1.0f);
+		model = glm::translate(modelTemp, glm::vec3(0.6f, 0.0f, 0.0f)); // Desde la base del dedo 2
+		model = glm::rotate(model, glm::radians(dedo2b), glm::vec3(0.0f, 0.0f, 1.0f));
+		modelTemp = model = glm::translate(model, glm::vec3(0.6f, 0.0f, 0.0f)); // Ajuste tras rotación
+		model = glm::scale(model, glm::vec3(1.5f, 0.5f, 0.45f));
+		color = glm::vec3(0.9f, 0.7f, 0.6f);
 		// Dibujamos
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		glDrawArrays(GL_TRIANGLES, 0, 36);//G
+		glDrawArrays(GL_TRIANGLES, 0, 36); // J
+
+		// ------------------------ Dedo 2 pt3 --------------------------------
+		model = glm::translate(modelTemp, glm::vec3(0.5f, 0.0f, 0.0f)); // Desde la base de la segunda falange
+		model = glm::rotate(model, glm::radians(dedo2c), glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::translate(model, glm::vec3(0.4f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.2f, 0.4f, 0.35f));
+		color = glm::vec3(0.8f, 0.6f, 0.7f);
+		// Dibujamos
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glDrawArrays(GL_TRIANGLES, 0, 36); // K
 
 		// ------------------------ Dedo 3 pt1 --------------------------------
-		model = glm::translate(modelTemp, glm::vec3(-0.5f, 0.0f, -0.6f));
-		model = glm::rotate(model, glm::radians(dedo2), glm::vec3(0.0f, 0.0f, 1.0f));
-		modelTemp = model = glm::translate(model, glm::vec3(0.5f, 0.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(1.2f, 0.5f, 0.45f));
-		color = glm::vec3(1.0f, 1.0f, 0.7f);
+		model = glm::translate(modelTemp4, glm::vec3(0.0f, 0.7f, 0.4f)); // Nueva posición
+		model = glm::rotate(model, glm::radians(dedo3), glm::vec3(0.0f, 0.0f, 2.0f));
+		modelTemp5 = modelTemp = model = glm::translate(model, glm::vec3(0.25f, 0.0f, 0.0f)); // Punto base para falanges
+		model = glm::scale(model, glm::vec3(1.0f, 0.5f, 0.45f));
+		color = glm::vec3(1.0f, 0.9f, 0.5f);
 		// Dibujamos
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		glDrawArrays(GL_TRIANGLES, 0, 36);//F
+		glDrawArrays(GL_TRIANGLES, 0, 36); // L
+
 		// ------------------------ Dedo 3 pt2 --------------------------------
-		model = glm::translate(modelTemp, glm::vec3(0.7f, 0.0f, 0.0f));
-		model = glm::rotate(model, glm::radians(dedo1b), glm::vec3(0.0f, 0.0f, 1.0f));
-		model = glm::translate(model, glm::vec3(0.5f, 0.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(1.2f, 0.5f, 0.45f));
-		color = glm::vec3(0.8f, 0.7f, 1.0f);
+		model = glm::translate(modelTemp, glm::vec3(0.55f, 0.0f, 0.0f)); // Desde la base del dedo 3
+		model = glm::rotate(model, glm::radians(dedo3b), glm::vec3(0.0f, 0.0f, 1.0f));
+		modelTemp = model = glm::translate(model, glm::vec3(0.55f, 0.0f, 0.0f)); // Ajuste tras rotación
+		model = glm::scale(model, glm::vec3(1.4f, 0.5f, 0.45f));
+		color = glm::vec3(0.9f, 0.6f, 0.6f);
 		// Dibujamos
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		glDrawArrays(GL_TRIANGLES, 0, 36);//G
+		glDrawArrays(GL_TRIANGLES, 0, 36); // M
+
+		// ------------------------ Dedo 3 pt3 --------------------------------
+		model = glm::translate(modelTemp, glm::vec3(0.45f, 0.0f, 0.0f)); // Desde la base de la segunda falange
+		model = glm::rotate(model, glm::radians(dedo3c), glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::translate(model, glm::vec3(0.35f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.1f, 0.4f, 0.35f));
+		color = glm::vec3(0.8f, 0.5f, 0.7f);
+		// Dibujamos
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glDrawArrays(GL_TRIANGLES, 0, 36); // N
 
 		// ------------------------ Dedo 4 pt1 --------------------------------
-		model = glm::translate(modelTemp, glm::vec3(-0.5f, 0.0f, -0.7f));
-		model = glm::rotate(model, glm::radians(dedo2), glm::vec3(0.0f, 0.0f, 1.0f));
-		modelTemp = model = glm::translate(model, glm::vec3(0.5f, 0.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(1.2f, 0.5f, 0.45f));
-		color = glm::vec3(1.0f, 1.0f, 0.7f);
+		model = glm::translate(modelTemp6, glm::vec3(-0.2f, 0.7f, 0.0f)); // Nueva posición en la palma
+		model = glm::rotate(model, glm::radians(dedo4), glm::vec3(0.0f, 0.0f, 2.0f));
+		modelTemp7 = modelTemp = model = glm::translate(model, glm::vec3(0.25f, 0.0f, 0.0f)); // Punto base para falanges
+		model = glm::scale(model, glm::vec3(0.9f, 0.5f, 0.45f));
+		color = glm::vec3(1.0f, 0.8f, 0.4f);
 		// Dibujamos
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		glDrawArrays(GL_TRIANGLES, 0, 36);//F
+		glDrawArrays(GL_TRIANGLES, 0, 36); // P
+
 		// ------------------------ Dedo 4 pt2 --------------------------------
-		model = glm::translate(modelTemp, glm::vec3(0.7f, 0.0f, 0.0f));
-		model = glm::rotate(model, glm::radians(dedo1b), glm::vec3(0.0f, 0.0f, 1.0f));
-		model = glm::translate(model, glm::vec3(0.5f, 0.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(1.2f, 0.5f, 0.45f));
-		color = glm::vec3(0.8f, 0.7f, 1.0f);
+		model = glm::translate(modelTemp, glm::vec3(0.5f, 0.0f, 0.0f)); // Desde la base del dedo 4
+		model = glm::rotate(model, glm::radians(dedo4b), glm::vec3(0.0f, 0.0f, 1.0f));
+		modelTemp = model = glm::translate(model, glm::vec3(0.5f, 0.0f, 0.0f)); // Ajuste tras rotación
+		model = glm::scale(model, glm::vec3(1.3f, 0.5f, 0.45f));
+		color = glm::vec3(0.9f, 0.7f, 0.5f);
 		// Dibujamos
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		glDrawArrays(GL_TRIANGLES, 0, 36);//G
+		glDrawArrays(GL_TRIANGLES, 0, 36); // Q
+
+		// ------------------------ Dedo 4 pt3 --------------------------------
+		model = glm::translate(modelTemp, glm::vec3(0.4f, 0.0f, 0.0f)); // Desde la base de la segunda falange
+		model = glm::rotate(model, glm::radians(dedo4c), glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::translate(model, glm::vec3(0.3f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.0f, 0.4f, 0.35f));
+		color = glm::vec3(0.8f, 0.6f, 0.6f);
+		// Dibujamos
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glDrawArrays(GL_TRIANGLES, 0, 36); // R
 
 		// ------------------------ Pulgar pt1 --------------------------------
-		model = glm::translate(modelTemp3, glm::vec3(0.0f, -0.35f, -0.02f));
-		model = glm::rotate(model, glm::radians(pulgar), glm::vec3(0.0f, 0.0f, 1.0f));
-		modelTemp = model = glm::translate(model, glm::vec3(0.5f, 0.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(1.2f, 0.5f, 0.45f));
-		color = glm::vec3(0.7f, 1.0f, 0.85f);
+		model = glm::translate(modelTemp8, glm::vec3(-0.3f, 0.5f, 0.3f)); // Posición más baja y lateral
+		model = glm::rotate(model, glm::radians(pulgar), glm::vec3(0.0f, 0.0f, 1.0f)); // Rotación en el eje Z
+		modelTemp9 = modelTemp = model = glm::translate(model, glm::vec3(0.2f, 0.0f, 0.0f)); // Punto base para la siguiente falange
+		model = glm::scale(model, glm::vec3(1.2f, 0.6f, 0.5f)); // Más grueso y más corto
+		color = glm::vec3(1.0f, 0.85f, 0.6f);
 		// Dibujamos
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		glDrawArrays(GL_TRIANGLES, 0, 36);//F
-		// ------------------------ Pulgar pt2 --------------------------------
-		model = glm::translate(modelTemp, glm::vec3(0.7f, 0.0f, 0.0f));
-		model = glm::rotate(model, glm::radians(pulgarb), glm::vec3(0.0f, 0.0f, 1.0f));
-		model = glm::translate(model, glm::vec3(0.5f, 0.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(1.2f, 0.5f, 0.65f));
-		color = glm::vec3(1.0f, 0.85f, 0.7f);
-		// Dibujamos
-		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
-		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		glDrawArrays(GL_TRIANGLES, 0, 36);//G
+		glDrawArrays(GL_TRIANGLES, 0, 36); // S
 
+		// ------------------------ Pulgar pt2 --------------------------------
+		model = glm::translate(modelTemp, glm::vec3(0.4f, 0.0f, 0.0f)); // Desde la base del pulgar
+		model = glm::rotate(model, glm::radians(pulgarb), glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::translate(model, glm::vec3(0.3f, 0.0f, 0.0f)); // Ajuste tras la rotación
+		model = glm::scale(model, glm::vec3(1.0f, 0.55f, 0.45f)); // Más corto pero manteniendo grosor
+		color = glm::vec3(0.95f, 0.75f, 0.55f);
+		// Dibujamos
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glDrawArrays(GL_TRIANGLES, 0, 36); // T
 
 
 		glBindVertexArray(0);
@@ -449,6 +486,69 @@ void Inputs(GLFWwindow* window) {
 	}
 	if (glfwGetKey(window, GLFW_KEY_V) == GLFW_PRESS && -10.0f < dedo1c)
 		dedo1c -= 0.28f;
+	// ------------------------ Dedo 2 --------------------------------
+	if (glfwGetKey(window, GLFW_KEY_U) == GLFW_PRESS) {
+		if (20.0f > dedo1)
+			dedo1 += 0.28f;
+	}
+	if (glfwGetKey(window, GLFW_KEY_J) == GLFW_PRESS && -10.0f < dedo1)
+		dedo1 -= 0.28f;
+	// ------------------------ Dedo 2b --------------------------------
+	if (glfwGetKey(window, GLFW_KEY_M) == GLFW_PRESS) {
+		if (0.0f > dedo1b)
+			dedo1b += 0.28f;
+	}
+	if (glfwGetKey(window, GLFW_KEY_N) == GLFW_PRESS && -30.0f < dedo1b)
+		dedo1b -= 0.28f;
+	// ------------------------ Dedo 2c --------------------------------
+	if (glfwGetKey(window, GLFW_KEY_B) == GLFW_PRESS) {
+		if (10.0f > dedo1c)
+			dedo1c += 0.28f;
+	}
+	if (glfwGetKey(window, GLFW_KEY_V) == GLFW_PRESS && -10.0f < dedo1c)
+		dedo1c -= 0.28f;
+	// ------------------------ Dedo 3 --------------------------------
+	if (glfwGetKey(window, GLFW_KEY_U) == GLFW_PRESS) {
+		if (20.0f > dedo1)
+			dedo1 += 0.28f;
+	}
+	if (glfwGetKey(window, GLFW_KEY_J) == GLFW_PRESS && -10.0f < dedo1)
+		dedo1 -= 0.28f;
+	// ------------------------ Dedo 3b --------------------------------
+	if (glfwGetKey(window, GLFW_KEY_M) == GLFW_PRESS) {
+		if (0.0f > dedo1b)
+			dedo1b += 0.28f;
+	}
+	if (glfwGetKey(window, GLFW_KEY_N) == GLFW_PRESS && -30.0f < dedo1b)
+		dedo1b -= 0.28f;
+	// ------------------------ Dedo 3c --------------------------------
+	if (glfwGetKey(window, GLFW_KEY_B) == GLFW_PRESS) {
+		if (10.0f > dedo1c)
+			dedo1c += 0.28f;
+	}
+	if (glfwGetKey(window, GLFW_KEY_V) == GLFW_PRESS && -10.0f < dedo1c)
+		dedo1c -= 0.28f;
+	// ------------------------ Dedo 4 --------------------------------
+	if (glfwGetKey(window, GLFW_KEY_U) == GLFW_PRESS) {
+		if (20.0f > dedo1)
+			dedo1 += 0.28f;
+	}
+	if (glfwGetKey(window, GLFW_KEY_J) == GLFW_PRESS && -10.0f < dedo1)
+		dedo1 -= 0.28f;
+	// ------------------------ Dedo 4b --------------------------------
+	if (glfwGetKey(window, GLFW_KEY_M) == GLFW_PRESS) {
+		if (0.0f > dedo1b)
+			dedo1b += 0.28f;
+	}
+	if (glfwGetKey(window, GLFW_KEY_N) == GLFW_PRESS && -30.0f < dedo1b)
+		dedo1b -= 0.28f;
+	// ------------------------ Dedo 4c --------------------------------
+	if (glfwGetKey(window, GLFW_KEY_B) == GLFW_PRESS) {
+		if (10.0f > dedo1c)
+			dedo1c += 0.28f;
+	}
+	if (glfwGetKey(window, GLFW_KEY_V) == GLFW_PRESS && -10.0f < dedo1c)
+		dedo1c -= 0.28f;
 	// ------------------------ Pulgar --------------------------------
 	if (glfwGetKey(window, GLFW_KEY_I) == GLFW_PRESS) {
 		if (10.0f > pulgar)
@@ -463,11 +563,5 @@ void Inputs(GLFWwindow* window) {
 	}
 	if (glfwGetKey(window, GLFW_KEY_L) == GLFW_PRESS && 0.0f < pulgarb)
 		pulgarb -= 0.28f;
-	// ------------------------ Pulgarc --------------------------------
-	if (glfwGetKey(window, GLFW_KEY_P) == GLFW_PRESS) {
-		if (15.0f > pulgarc)
-			pulgarc += 0.28f;
-	}
-	if (glfwGetKey(window, GLFW_KEY_SEMICOLON) == GLFW_PRESS && -15.0f < pulgarc)
-		pulgarc -= 0.28f;
+
 }
