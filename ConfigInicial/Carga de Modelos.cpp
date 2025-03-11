@@ -2,7 +2,7 @@
 Practica 6
 Ramirez Moreno Diego Gerardo
 319296738
-07 de marzo del 2025
+11 de marzo del 2025
 */
 
 // Std. Includes
@@ -102,10 +102,12 @@ int main( )
     
     // Load models
     Model dog((char*)"Models/RedDog.obj");
-    glm::mat4 projection = glm::perspective( camera.GetZoom( ), ( float )SCREEN_WIDTH/( float )SCREEN_HEIGHT, 0.1f, 100.0f );
-    
-  
+    Model ball((char*)"Models/ball.obj");
 
+    glm::mat4 projection = glm::perspective(camera.GetZoom(), (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT, 0.1f, 100.0f);
+
+
+   
     // Game loop
     while (!glfwWindowShouldClose(window))
     {
@@ -142,10 +144,14 @@ int main( )
         // Pass the transformed model matrix to the shader program
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
 
-        // Draw the "dog" object using the specified shader
+        // Draw the "ball" object using the specified shader
         dog.Draw(shader);
 
-        // Swap the buffers
+        model = glm::translate(model, glm::vec3(-1.0f, -1.0f, 0.0f));
+        model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        ball.Draw(shader);
+
         glfwSwapBuffers( window );
     }
     
