@@ -37,8 +37,5 @@
     <None Include="Shader\modelLoading.vs">
       <Filter>Archivos de origen\Shader</Filter>
     </None>
-    <None Include="Models\paredes\paredes.mtl">
-      <Filter>Archivos de origen</Filter>
-    </None>
   </ItemGroup>
 </Project>

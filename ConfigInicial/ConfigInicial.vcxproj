@@ -26,7 +26,6 @@
     <ClCompile Include="Carga de Modelos.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Models\paredes\paredes.mtl" />
     <None Include="Shader\modelLoading.frag" />
     <None Include="Shader\modelLoading.vs" />
   </ItemGroup>
