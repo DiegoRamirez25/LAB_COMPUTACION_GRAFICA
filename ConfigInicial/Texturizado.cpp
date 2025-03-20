@@ -3,7 +3,7 @@
 Práctica 7
 Ramírez Moreno Diego gerardo
 319296738
-16 de marzo del 2025
+21 de marzo del 2025
 */
 
 #include <iostream>
@@ -64,7 +64,7 @@ int main()
 	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
 	// Create a GLFWwindow object that we can use for GLFW's functions
-	GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Texturizado | Ramírez Moreno Diego Gerardo | 319296738", nullptr, nullptr);
+	GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Texturizado | Ramirez Moreno Diego Gerardo | 319296738", nullptr, nullptr);
 
 	if (nullptr == window)
 	{
