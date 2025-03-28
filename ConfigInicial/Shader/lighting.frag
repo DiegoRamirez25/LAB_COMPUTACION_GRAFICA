@@ -1,16 +1,15 @@
 #version 330 core
-struct Material
-{
+
+struct Material {
     vec3 ambient;
     vec3 diffuse;
     vec3 specular;
     float shininess;
 };
 
-struct Light
-{
+struct Light {
     vec3 position;
-    
+
     vec3 ambient;
     vec3 diffuse;
     vec3 specular;
@@ -27,46 +26,35 @@ uniform Material material;
 uniform Light light;
 uniform Light newLight;
 
-uniform sampler2D texture_difusse;
+uniform sampler2D texture_diffusse;
 
 void main()
 {
     vec3 norm = normalize(Normal);
     vec3 viewDir = normalize(viewPos - FragPos);
 
-    // === LUZ 1 (light - Sol o fuente principal) ===
-    vec3 lightDir = normalize(light.position - FragPos);
+    // ----- Primera luz -----
+    vec3 lightDir1 = normalize(light.position - FragPos);
+    float diff1 = max(dot(norm, lightDir1), 0.0);
+    vec3 reflectDir1 = reflect(-lightDir1, norm);
+    float spec1 = pow(max(dot(viewDir, reflectDir1), 0.0), material.shininess);
 
-    // Ambient
-    vec3 ambient1 = light.ambient * material.diffuse;
-
-    // Diffuse
-    float diff1 = max(dot(norm, lightDir), 0.0);
+    vec3 ambient1 = light.ambient * material.ambient;
     vec3 diffuse1 = light.diffuse * diff1 * material.diffuse;
+    vec3 specular1 = light.specular * spec1 * material.specular;
 
-    // Specular
-    vec3 reflectDir = reflect(-lightDir, norm);
-    float spec1 = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
-    vec3 specular1 = light.specular * (spec1 * material.specular);
+    // ----- Segunda luz -----
+    vec3 lightDir2 = normalize(newLight.position - FragPos);
+    float diff2 = max(dot(norm, lightDir2), 0.0);
+    vec3 reflectDir2 = reflect(-lightDir2, norm);
+    float spec2 = pow(max(dot(viewDir, reflectDir2), 0.0), material.shininess);
 
-    // === LUZ 2 (newLight - Luna o fuente secundaria) ===
-    vec3 newLightDir = normalize(newLight.position - FragPos);
-
-    // Ambient
-    vec3 ambient2 = newLight.ambient * material.diffuse;
-
-    // Diffuse
-    float diff2 = max(dot(norm, newLightDir), 0.0);
+    vec3 ambient2 = newLight.ambient * material.ambient;
     vec3 diffuse2 = newLight.diffuse * diff2 * material.diffuse;
+    vec3 specular2 = newLight.specular * spec2 * material.specular;
 
-    // Specular
-    vec3 newReflectDir = reflect(-newLightDir, norm);
-    float spec2 = pow(max(dot(viewDir, newReflectDir), 0.0), material.shininess);
-    vec3 specular2 = newLight.specular * (spec2 * material.specular);
+    vec3 result = ambient1 + diffuse1 + specular1 +
+                  ambient2 + diffuse2 + specular2;
 
-    // Resultado final
-    vec3 result = ambient1 + diffuse1 + specular1
-                + ambient2 + diffuse2 + specular2;
-
-    color = vec4(result, 1.0f) * texture(texture_difusse, TexCoords);
+    color = vec4(result, 1.0f) * texture(texture_diffusse, TexCoords);
 }
