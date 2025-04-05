@@ -101,7 +101,7 @@ int main()
     Shader shader("Shader/modelLoading.vs", "Shader/modelLoading.frag");
 
     // Load models
-    Model dog((char*)"Models/RedDog.obj");
+    Model dog((char*)"Models/PF.obj");
     Model templo((char*)"Models/templo.obj");
     Model gong((char*)"Models/gong.obj");
     Model cerezos((char*)"Models/cerezo/cerezos.obj");
@@ -143,25 +143,25 @@ int main()
         dog.Draw(shader);
 
 
-        // TEMPLO
-        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-        templo.Draw(shader);
+        //// TEMPLO
+        //glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        //templo.Draw(shader);
 
-        // GONG
-        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-        gong.Draw(shader);
+        //// GONG
+        //glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        //gong.Draw(shader);
 
-        // CEREZOS
-        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-        cerezos.Draw(shader);
+        //// CEREZOS
+        //glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        //cerezos.Draw(shader);
 
-        // BARRILES
-        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-        barriles.Draw(shader);
+        //// BARRILES
+        //glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        //barriles.Draw(shader);
 
-        // DRAGON
-        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-        paredes.Draw(shader);
+        //// DRAGON
+        //glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        //paredes.Draw(shader);
 
         glfwSwapBuffers(window);
     }

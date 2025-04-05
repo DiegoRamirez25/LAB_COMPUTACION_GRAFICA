@@ -32,14 +32,16 @@ void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode
 void MouseCallback(GLFWwindow* window, double xPos, double yPos);
 void DoMovement();
 
-//Para el control de dia/noche
+// Variables para día y noche
 float moonRotate = 0.0f;
 float sunRotate = 0.0f;
 bool moveMoon = false;
 bool moveSun = true;
+float radius = 15.0f;  // Radio para el arco del sol y la luna
 
-//Radio para rotar 180° a la luna y al sol
-float radius = 15.0f;
+// Posiciones de la luz (sol y luna)
+glm::vec3 lightPos(radius* cos(glm::radians(sunRotate)), radius* sin(glm::radians(sunRotate)), 0.0f);
+glm::vec3 newLightPos(radius* cos(glm::radians(moonRotate)), radius* sin(glm::radians(moonRotate)), 0.0f);
 
 // Camera
 Camera camera(glm::vec3(0.0f, 0.0f, 0.0f));
@@ -47,16 +49,6 @@ bool keys[1024];
 GLfloat lastX = 400, lastY = 300;
 bool firstMouse = true;
 
-
-// =================== Para la luz ========================
-glm::vec3 lightPos(radius* cos(glm::radians(sunRotate)), radius* sin(glm::radians(sunRotate)), 0.0f);
-glm::vec3 newLightPos(radius* cos(glm::radians(moonRotate)), radius* sin(glm::radians(moonRotate)), 0.0f);
-float movelightPos = 0.0f;
-float moveLight2 = 0.0f;
-GLfloat deltaTime = 0.0f;
-GLfloat lastFrame = 0.0f;
-float rot = 0.0f;
-bool activanim = false;
 
 int main()
 {
@@ -517,7 +509,6 @@ void DoMovement()
             moonRotate = 0.0f;
         }
     }
-
 
 }
 
