@@ -101,7 +101,7 @@ int main()
     Shader shader("Shader/modelLoading.vs", "Shader/modelLoading.frag");
 
     // Load models
-    Model dog((char*)"Models/PF.obj");
+    Model dog((char*)"Models/texturasPF/PF.obj");
     Model templo((char*)"Models/templo.obj");
     Model gong((char*)"Models/gong.obj");
     Model cerezos((char*)"Models/cerezo/cerezos.obj");
